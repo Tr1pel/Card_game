@@ -1,0 +1,20 @@
+﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Domain;
+
+public interface ICreature
+{
+    int Attack { get; }
+
+    int Health { get; }
+
+    bool IsAlive { get; }
+
+    void AttackTarget(ICreature target);
+
+    void TakeDamage(int amount);
+
+    void ModifyAttack(int delta);
+
+    void ModifyHealth(int delta);
+
+    ICreature CloneForNewContext();
+}
