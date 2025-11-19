@@ -18,6 +18,11 @@ public sealed class MagicShield : CreatureDecorator
 
     public override void TakeDamage(int amount)
     {
+        if (amount <= 0)
+        {
+            return;
+        }
+
         if (_spent < _charges)
         {
             _spent += 1;
