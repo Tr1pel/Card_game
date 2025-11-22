@@ -40,7 +40,7 @@ public sealed class Battle : IBattleEngine
                 return player1Turn ? BattleOutcome.Player1Win : BattleOutcome.Player2Win;
             }
 
-            attacker.AttackTarget(attacker);
+            attacker.AttackTarget(target);
             player1Turn = !player1Turn;
         }
     }
