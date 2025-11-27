@@ -1,6 +1,6 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Domain.Collection;
 
-public sealed class Collection
+public sealed class Collection : ICollection
 {
     private readonly List<ICreature> _owned;
 
@@ -11,12 +11,12 @@ public sealed class Collection
 
     public IReadOnlyCollection<ICreature> OwnedPrototypes => _owned;
 
-    public void AddOnwed(ICreature prototype)
+    public void AddToCollection(ICreature prototype)
     {
         _owned.Add(prototype);
     }
 
-    public void RemoveOwmed(ICreature prototype)
+    public void RemoveFromCollection(ICreature prototype)
     {
         _owned.Remove(prototype);
     }

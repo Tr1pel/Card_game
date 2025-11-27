@@ -2,23 +2,23 @@
 
 public sealed class Catalog : ICatalog
 {
-    private readonly List<ICreature> _prototupes;
+    private readonly List<ICreature> _prototypes;
 
     public Catalog()
     {
-        _prototupes = new List<ICreature>();
+        _prototypes = new List<ICreature>();
     }
 
-    public IReadOnlyCollection<ICreature> Prototypes => _prototupes;
+    public IReadOnlyCollection<ICreature> Prototypes => _prototypes;
 
-    public void AddPrototype(ICreature prototype)
+    public void AddToCatalog(ICreature prototype)
     {
-        _prototupes.Add(prototype);
+        _prototypes.Add(prototype);
     }
 
-    public void RemovePrototype(ICreature prototype)
+    public void RemoveFromCatalog(ICreature prototype)
     {
-        _prototupes.Remove(prototype);
+        _prototypes.Remove(prototype);
     }
 
     public IEnumerable<ICreature> CreateForBoard(IEnumerable<ICreature> prototypes)

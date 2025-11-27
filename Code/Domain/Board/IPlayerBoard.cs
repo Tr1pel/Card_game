@@ -6,9 +6,9 @@ public interface IPlayerBoard
 
     IReadOnlyList<ICreature> Creatures { get; }
 
-    bool Remove(ICreature creature);
+    void AddFromBoard(ICreature creature);
 
-    bool Add(ICreature creature);
+    void RemoveToBoard(ICreature creature);
 
     IEnumerable<ICreature> GetPotentialAttackers();
 

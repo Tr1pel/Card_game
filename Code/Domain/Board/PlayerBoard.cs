@@ -14,20 +14,19 @@ public sealed class PlayerBoard : IPlayerBoard
 
     public IReadOnlyList<ICreature> Creatures => _creatures;
 
-    public bool Add(ICreature creature)
+    public void AddFromBoard(ICreature creature)
     {
         if (_creatures.Count >= MaxSlots)
         {
-            return false;
+            return;
         }
 
         _creatures.Add(creature);
-        return true;
     }
 
-    public bool Remove(ICreature creature)
+    public void RemoveToBoard(ICreature creature)
     {
-        return _creatures.Remove(creature);
+        _creatures.Remove(creature);
     }
 
     public IEnumerable<ICreature> GetPotentialAttackers()

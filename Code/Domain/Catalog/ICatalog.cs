@@ -4,9 +4,9 @@ public interface ICatalog
 {
     IReadOnlyCollection<ICreature> Prototypes { get; }
 
-    void AddPrototype(ICreature prototype);
+    void AddToCatalog(ICreature prototype);
 
-    void RemovePrototype(ICreature prototype);
+    void RemoveFromCatalog(ICreature prototype);
 
     IEnumerable<ICreature> CreateForBoard(IEnumerable<ICreature> prototypes);
 

@@ -4,7 +4,7 @@ public interface ICollection
 {
     IReadOnlyCollection<ICreature> OwnedPrototypes { get; }
 
-    void AddOwmed(ICreature prototype);
+    void AddToCollection(ICreature prototype);
 
-    void RemoveOwmed(ICreature prototype);
+    void RemoveFromCollection(ICreature prototype);
 }
