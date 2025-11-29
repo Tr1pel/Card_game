@@ -1,10 +1,12 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Domain.Board;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 
-public sealed class PlayerBoard : IPlayerBoard
+namespace Itmo.ObjectOrientedProgramming.Lab3.Context.Board;
+
+public sealed class Board : IBoard
 {
     private readonly List<ICreature> _creatures;
 
-    public PlayerBoard(int maxSlots = 7)
+    public Board(int maxSlots = 7)
     {
         MaxSlots = maxSlots;
         _creatures = new List<ICreature>(maxSlots);

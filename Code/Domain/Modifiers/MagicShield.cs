@@ -1,4 +1,6 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Domain.Modifiers;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+
+namespace Itmo.ObjectOrientedProgramming.Lab3.Modifiers;
 
 public sealed class MagicShield : CreatureDecorator
 {

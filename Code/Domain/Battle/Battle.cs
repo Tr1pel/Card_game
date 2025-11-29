@@ -1,4 +1,6 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Domain.Battle;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+
+namespace Itmo.ObjectOrientedProgramming.Lab3.Battle;
 
 public sealed class Battle : IBattleEngine
 {

@@ -1,7 +1,7 @@
-﻿using Itmo.ObjectOrientedProgramming.Lab3.Domain.Board;
-using Itmo.ObjectOrientedProgramming.Lab3.Domain.Collection;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Context.Board;
+using Itmo.ObjectOrientedProgramming.Lab3.Context.Collection;
 
-namespace Itmo.ObjectOrientedProgramming.Lab3.Domain.Player;
+namespace Itmo.ObjectOrientedProgramming.Lab3.Player;
 
 public interface IPlayer
 {

@@ -1,4 +1,4 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Domain.Battle;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Battle;
 
 public interface IRng
 {

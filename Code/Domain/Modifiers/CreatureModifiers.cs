@@ -1,4 +1,6 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Domain.Modifiers;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+
+namespace Itmo.ObjectOrientedProgramming.Lab3.Modifiers;
 
 public static class CreatureModifiers
 {
@@ -24,7 +26,6 @@ public static class CreatureModifiers
         return new AttackMastery(creature, stacks);
     }
 
-    // Возможно обновить на что-то получше
     private static bool TryFindAttackMastery(ICreature creature, out AttackMastery? found)
     {
         found = null;

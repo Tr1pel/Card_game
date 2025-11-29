@@ -1,6 +1,6 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Domain;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 
-public static class CreatureExtensions
+public static class CreatureTransfer
 {
     public static ICreature ToBattle(this ICreature boardCreature)
     {

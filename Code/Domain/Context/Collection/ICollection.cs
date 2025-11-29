@@ -1,4 +1,6 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Domain.Collection;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+
+namespace Itmo.ObjectOrientedProgramming.Lab3.Context.Collection;
 
 public interface ICollection
 {

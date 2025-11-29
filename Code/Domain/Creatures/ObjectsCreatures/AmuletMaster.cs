@@ -1,4 +1,4 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Domain.Creatures;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Creatures.ObjectsCreatures;
 
 public sealed class AmuletMaster : Creature
 {

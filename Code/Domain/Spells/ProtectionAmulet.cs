@@ -1,6 +1,8 @@
-﻿using Itmo.ObjectOrientedProgramming.Lab3.Domain.Modifiers;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 
-namespace Itmo.ObjectOrientedProgramming.Lab3.Domain.Spells;
+using Itmo.ObjectOrientedProgramming.Lab3.Modifiers;
+
+namespace Itmo.ObjectOrientedProgramming.Lab3.Spells;
 
 public sealed class ProtectionAmulet : ISpell
 {

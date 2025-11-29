@@ -1,4 +1,4 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Domain;
+﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 
 public interface ICreature
 {
