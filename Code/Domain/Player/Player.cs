@@ -7,11 +7,11 @@ public sealed class Player : IPlayer
 {
     public string Name { get; }
 
-    public IPlayerBoard Board { get; }
+    public IBoard Board { get; }
 
     public ICollection Collection { get; }
 
-    public Player(string name, IPlayerBoard board, ICollection collection)
+    public Player(string name, IBoard board, ICollection collection)
     {
         Name = name;
         Board = board;

@@ -7,7 +7,7 @@ public interface IPlayer
 {
     string Name { get; }
 
-    IPlayerBoard Board { get; }
+    IBoard Board { get; }
 
     ICollection Collection { get; }
 }
