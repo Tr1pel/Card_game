@@ -33,6 +33,11 @@ public sealed class BattleEngine : IBattleEngine
                     return BattleOutcome.Draw;
                 }
 
+                if (target.Attack <= 0)
+                {
+                    return BattleOutcome.Draw;
+                }
+
                 player1Turn = !player1Turn;
                 continue;
             }
