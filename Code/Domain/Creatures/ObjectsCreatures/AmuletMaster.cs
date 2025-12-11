@@ -11,5 +11,3 @@ public sealed class AmuletMaster : Creature
         return new AmuletMaster(attack, health);
     }
 }
-
-// не забыть наложить модификаторы
