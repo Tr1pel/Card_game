@@ -10,7 +10,5 @@ public interface ICatalog
 
     void RemoveFromCatalog(ICreature prototype);
 
-    IEnumerable<ICreature> CreateForBoard(IEnumerable<ICreature> prototypes);
-
     ICreature CreateForBoard(ICreature prototype);
 }

@@ -4,7 +4,7 @@ public sealed class MimicChest : Creature
 {
     public MimicChest() : base(attack: 1, health: 1) { }
 
-    private MimicChest(int attack,  int health) : base(attack,  health) { }
+    private MimicChest(int attack, int health) : base(attack, health) { }
 
     public override void AttackTarget(ICreature target)
     {

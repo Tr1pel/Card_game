@@ -23,11 +23,6 @@ public sealed class PlayerCatalog : ICatalog
         _prototypes.Remove(prototype);
     }
 
-    public IEnumerable<ICreature> CreateForBoard(IEnumerable<ICreature> prototypes)
-    {
-        return prototypes.Select(p => p.ToBoard()).ToList();
-    }
-
     public ICreature CreateForBoard(ICreature prototype)
     {
         return prototype.ToBoard();
