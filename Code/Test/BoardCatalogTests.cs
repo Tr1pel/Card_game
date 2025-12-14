@@ -1,6 +1,7 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab3.Context.Board;
 using Itmo.ObjectOrientedProgramming.Lab3.Context.Catalog;
 using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+using Itmo.ObjectOrientedProgramming.Lab3.Creatures.Factories;
 using Itmo.ObjectOrientedProgramming.Lab3.Creatures.ObjectsCreatures;
 using Xunit;
 
@@ -69,32 +70,41 @@ public class BoardCatalogTests
     }
 
     [Fact]
-    public void Catalog_CreateForBoard_ShouldClonePrototype()
+    public void Catalog_Create_ShouldProduceIndependentInstances()
     {
         var catalog = new PlayerCatalog();
-        var prototype = new DummyCreature(2, 3);
-        catalog.AddToCatalog(prototype);
+        var factory = new MimicChestFactory();
+        catalog.AddFactory(factory);
 
-        ICreature boardCopy = catalog.CreateForBoard(prototype);
+        ICreature p1 = catalog.Create(factory.Id);
+        ICreature p2 = catalog.Create(factory.Id);
 
-        boardCopy.ModifyAttack(5);
+        p2.TakeDamage(10);
 
-        Assert.Equal(2, prototype.Attack);
-        Assert.NotSame(prototype, boardCopy);
+        Assert.Equal(1, p1.Attack);
+        Assert.NotSame(p1, p2);
     }
 
     [Fact]
     public void Catalog_AddAndRemove_ShouldUpdatePrototypes()
     {
         var catalog = new PlayerCatalog();
-        var p1 = new DummyCreature(1, 1);
-        var p2 = new DummyCreature(2, 2);
+        var p1 = new BattleAnalystFactory();
+        var p2 = new EvilFighterFactory();
 
-        catalog.AddToCatalog(p1);
-        catalog.AddToCatalog(p2);
-        catalog.RemoveFromCatalog(p1);
+        catalog.AddFactory(p1);
+        catalog.AddFactory(p2);
+        catalog.RemoveFactory(p1);
 
-        Assert.Single(catalog.Prototypes);
-        Assert.Same(p2, catalog.Prototypes.First());
+        Assert.Single(catalog.Factories);
+        Assert.Same(p2, catalog.Factories.First());
+    }
+
+    [Fact]
+    public void Catalog_Create_WithUnknownId_ShouldThrow()
+    {
+        var catalog = new PlayerCatalog();
+
+        Assert.Throws<InvalidOperationException>(() => catalog.Create("MissingFactory"));
     }
 }

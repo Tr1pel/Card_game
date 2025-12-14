@@ -17,10 +17,11 @@ public class GameScenarioTests
         var board1 = new PlayerBoard();
         var board2 = new PlayerBoard();
 
-        board1.AddFromBoard(catalog.CreateForBoard(catalog.Prototypes.First()));
-        board1.AddFromBoard(catalog.CreateForBoard(catalog.Prototypes.Skip(1).First()));
-        board2.AddFromBoard(catalog.CreateForBoard(catalog.Prototypes.Skip(2).First()));
-        board2.AddFromBoard(catalog.CreateForBoard(catalog.Prototypes.Skip(3).First()));
+        var factories = catalog.Factories.ToList();
+        board1.AddFromBoard(catalog.Create(factories[0].Id));
+        board1.AddFromBoard(catalog.Create(factories[1].Id));
+        board1.AddFromBoard(catalog.Create(factories[2].Id));
+        board1.AddFromBoard(catalog.Create(factories[3].Id));
 
         var spells = new ISpell[]
         {
@@ -40,6 +41,6 @@ public class GameScenarioTests
         var engine = new BattleEngine(rng);
         BattleOutcome outcome = engine.Fight(board1.Creatures, board2.Creatures);
 
-        Assert.True(Enum.IsDefined<BattleOutcome>(outcome));
+        Assert.True(Enum.IsDefined(outcome));
     }
 }
