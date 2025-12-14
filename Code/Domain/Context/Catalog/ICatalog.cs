@@ -1,14 +1,15 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+using Itmo.ObjectOrientedProgramming.Lab3.Creatures.Factories;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Context.Catalog;
 
 public interface ICatalog
 {
-    IReadOnlyCollection<ICreature> Prototypes { get; }
+    IReadOnlyCollection<ICreatureFactory> Factories { get; }
 
-    void AddToCatalog(ICreature prototype);
+    void AddFactory(ICreatureFactory factory);
 
-    void RemoveFromCatalog(ICreature prototype);
+    void RemoveFactory(ICreatureFactory factory);
 
-    ICreature CreateForBoard(ICreature prototype);
+    ICreature Create(string id);
 }

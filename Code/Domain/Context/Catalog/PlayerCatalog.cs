@@ -1,30 +1,38 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+using Itmo.ObjectOrientedProgramming.Lab3.Creatures.Factories;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Context.Catalog;
 
 public sealed class PlayerCatalog : ICatalog
 {
-    private readonly List<ICreature> _prototypes;
+    private readonly List<ICreatureFactory> _factories;
 
     public PlayerCatalog()
     {
-        _prototypes = new List<ICreature>();
+        _factories = new List<ICreatureFactory>();
     }
 
-    public IReadOnlyCollection<ICreature> Prototypes => _prototypes;
+    public IReadOnlyCollection<ICreatureFactory> Factories => _factories;
 
-    public void AddToCatalog(ICreature prototype)
+    public void AddFactory(ICreatureFactory factory)
     {
-        _prototypes.Add(prototype);
+        _factories.Add(factory);
     }
 
-    public void RemoveFromCatalog(ICreature prototype)
+    public void RemoveFactory(ICreatureFactory factory)
     {
-        _prototypes.Remove(prototype);
+        _factories.Remove(factory);
     }
 
-    public ICreature CreateForBoard(ICreature prototype)
+    public ICreature Create(string id)
     {
-        return prototype.ToBoard();
+        ArgumentException.ThrowIfNullOrEmpty(id);
+        ICreatureFactory? factory = _factories.FirstOrDefault(f => string.Equals(f.Id, id, StringComparison.Ordinal));
+        if (factory is null)
+        {
+            throw new InvalidOperationException($"Фабрика {id} не найдена в каталоге");
+        }
+
+        return factory.Create();
     }
 }
