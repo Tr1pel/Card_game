@@ -39,7 +39,7 @@ public class GameScenarioTests
         }
 
         var engine = new BattleEngine(rng);
-        BattleOutcome outcome = engine.Fight(board1.Creatures, board2.Creatures);
+        ResultType outcome = engine.Fight(board1, board2);
 
         Assert.True(Enum.IsDefined(outcome));
     }

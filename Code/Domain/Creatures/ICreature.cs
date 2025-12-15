@@ -1,10 +1,12 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures.ValueObjects;
+
+namespace Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 
 public interface ICreature
 {
-    int Attack { get; }
+    AttackValue Attack { get; }
 
-    int Health { get; }
+    HealthValue Health { get; }
 
     bool IsAlive { get; }
 

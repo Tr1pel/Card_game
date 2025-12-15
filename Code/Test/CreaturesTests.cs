@@ -15,8 +15,8 @@ public class CreaturesTests
 
         attacker.AttackTarget(target);
 
-        Assert.Equal(4, attacker.Attack);
-        Assert.Equal(6, target.Health);
+        Assert.Equal(4, attacker.Attack.Value);
+        Assert.Equal(6, target.Health.Value);
     }
 
     [Fact]
@@ -26,8 +26,8 @@ public class CreaturesTests
 
         fighter.TakeDamage(2);
 
-        Assert.Equal(4, fighter.Health);
-        Assert.Equal(2, fighter.Attack);
+        Assert.Equal(4, fighter.Health.Value);
+        Assert.Equal(2, fighter.Attack.Value);
     }
 
     [Fact]
@@ -38,7 +38,7 @@ public class CreaturesTests
         fighter.TakeDamage(10);
 
         Assert.False(fighter.IsAlive);
-        Assert.Equal(1, fighter.Attack);
+        Assert.Equal(1, fighter.Attack.Value);
     }
 
     [Fact]
@@ -49,8 +49,8 @@ public class CreaturesTests
 
         mimic.AttackTarget(target);
 
-        Assert.Equal(5, mimic.Attack);
-        Assert.Equal(2, mimic.Health);
+        Assert.Equal(5, mimic.Attack.Value);
+        Assert.Equal(2, mimic.Health.Value);
         Assert.False(target.IsAlive);
     }
 
@@ -62,13 +62,13 @@ public class CreaturesTests
         horror.TakeDamage(5);
 
         Assert.True(horror.IsAlive);
-        Assert.Equal(4, horror.Attack);
-        Assert.Equal(1, horror.Health);
+        Assert.Equal(4, horror.Attack.Value);
+        Assert.Equal(1, horror.Health.Value);
 
         horror.TakeDamage(2);
 
         Assert.False(horror.IsAlive);
-        Assert.Equal(-1, horror.Health);
+        Assert.Equal(-1, horror.Health.Value);
     }
 
     [Fact]
@@ -80,9 +80,9 @@ public class CreaturesTests
 
         amuletMaster.TakeDamage(10);
         Assert.True(amuletMaster.IsAlive);
-        Assert.Equal(2, amuletMaster.Health);
+        Assert.Equal(2, amuletMaster.Health.Value);
 
         amuletMaster.TakeDamage(1);
-        Assert.Equal(1, amuletMaster.Health);
+        Assert.Equal(1, amuletMaster.Health.Value);
     }
 }

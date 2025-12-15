@@ -1,4 +1,5 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+using Itmo.ObjectOrientedProgramming.Lab3.Creatures.ValueObjects;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Modifiers;
 
@@ -11,9 +12,9 @@ public abstract class CreatureDecorator : ICreature
 
     public ICreature Inner { get; }
 
-    public int Attack => Inner.Attack;
+    public AttackValue Attack => Inner.Attack;
 
-    public int Health => Inner.Health;
+    public HealthValue Health => Inner.Health;
 
     public bool IsAlive => Inner.IsAlive;
 

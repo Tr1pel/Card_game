@@ -15,8 +15,8 @@ public class CloneTests
         ICreature clone = original.CloneForNewContext();
         clone.ModifyAttack(2);
 
-        Assert.Equal(3, original.Attack);
-        Assert.Equal(5, clone.Attack);
+        Assert.Equal(3, original.Attack.Value);
+        Assert.Equal(5, clone.Attack.Value);
         Assert.NotSame(original, clone);
     }
 
@@ -26,16 +26,16 @@ public class CloneTests
         ICreature original = new DummyCreature(2, 10).WithMagicShield(charges: 2);
 
         original.TakeDamage(99);
-        Assert.Equal(10, original.Health);
+        Assert.Equal(10, original.Health.Value);
 
         ICreature clone = original.CloneForNewContext();
 
         clone.TakeDamage(5);
         clone.TakeDamage(5);
-        Assert.Equal(10, clone.Health);
+        Assert.Equal(10, clone.Health.Value);
 
         clone.TakeDamage(5);
-        Assert.Equal(5, clone.Health);
+        Assert.Equal(5, clone.Health.Value);
     }
 
     [Fact]
@@ -44,13 +44,13 @@ public class CloneTests
         var horror = new ImmortalHorror();
         horror.TakeDamage(10);
         Assert.True(horror.IsAlive);
-        Assert.Equal(1, horror.Health);
+        Assert.Equal(1, horror.Health.Value);
 
         ICreature clone = horror.CloneForNewContext();
 
         clone.TakeDamage(5);
         Assert.True(clone.IsAlive);
-        Assert.Equal(1, clone.Health);
+        Assert.Equal(1, clone.Health.Value);
     }
 
     [Fact]
@@ -63,6 +63,6 @@ public class CloneTests
 
         clone.AttackTarget(target);
 
-        Assert.Equal(6, target.Health);
+        Assert.Equal(6, target.Health.Value);
     }
 }

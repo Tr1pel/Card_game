@@ -81,7 +81,7 @@ public class BoardCatalogTests
 
         p2.TakeDamage(10);
 
-        Assert.Equal(1, p1.Attack);
+        Assert.Equal(1, p1.Attack.Value);
         Assert.NotSame(p1, p2);
     }
 

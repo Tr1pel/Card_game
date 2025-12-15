@@ -13,12 +13,12 @@ public sealed class EvilFighter : Creature
             return;
         }
 
-        int wasHelth = Health;
+        int wasHelth = Health.Value;
         base.TakeDamage(amount);
 
-        if (wasHelth > 0 && Health > 0)
+        if (wasHelth > 0 && Health.Value > 0)
         {
-            ModifyAttack(Attack);
+            ModifyAttack(Attack.Value);
         }
     }
 

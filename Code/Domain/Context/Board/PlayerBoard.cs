@@ -1,4 +1,5 @@
-﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Battle;
+using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Context.Board;
 
@@ -39,6 +40,22 @@ public sealed class PlayerBoard : IBoard
     public IEnumerable<ICreature> GetPotentialTargets()
     {
         return _creatures.Where(c => c.IsAlive);
+    }
+
+    public ICreature? GetAttacker(IRng rng)
+    {
+        var candidates = _creatures.Where(c => c.IsAlive && c.Attack.Value > 0).ToList();
+
+        int indx = rng.NextInt(0, candidates.Count);
+        return candidates[indx];
+    }
+
+    public ICreature? GetTarget(IRng rng)
+    {
+        var candidates = _creatures.Where(c => c.IsAlive).ToList();
+
+        int indx = rng.NextInt(0, candidates.Count);
+        return candidates[indx];
     }
 
     public void CleanDead()

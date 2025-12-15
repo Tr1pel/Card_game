@@ -24,7 +24,7 @@ public sealed class ImmortalHorror : Creature
         if (wasAlive && !IsAlive && !_rebornUsed)
         {
             _rebornUsed = true;
-            ModifyHealth(1 - Health);
+            ModifyHealth(1 - Health.Value);
         }
     }
 

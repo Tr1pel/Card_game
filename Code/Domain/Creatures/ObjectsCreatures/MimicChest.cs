@@ -8,11 +8,11 @@ public sealed class MimicChest : Creature
 
     public override void AttackTarget(ICreature target)
     {
-        int newAttack = Math.Max(Attack, target.Attack);
-        int newHealth = Math.Max(Health, target.Health);
+        int newAttack = Math.Max(Attack.Value, target.Attack.Value);
+        int newHealth = Math.Max(Health.Value, target.Health.Value);
 
-        int dA = newAttack - Attack;
-        int dH = newHealth - Health;
+        int dA = newAttack - Attack.Value;
+        int dH = newHealth - Health.Value;
         if (dA != 0)
         {
             ModifyAttack(dA);

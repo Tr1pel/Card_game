@@ -1,17 +1,19 @@
-﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures.ValueObjects;
+
+namespace Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 
 public abstract class Creature : ICreature
 {
-    public int Attack { get; private set; }
+    public AttackValue Attack { get; private set; }
 
-    public int Health { get; private set; }
+    public HealthValue Health { get; private set; }
 
-    public bool IsAlive => Health > 0;
+    public bool IsAlive => Health.Value > 0;
 
     protected Creature(int attack, int health)
     {
-        Attack = attack;
-        Health = health;
+        Attack = new AttackValue(attack);
+        Health = new HealthValue(health);
     }
 
     public virtual void AttackTarget(ICreature target)
@@ -22,7 +24,7 @@ public abstract class Creature : ICreature
             throw new InvalidOperationException("Мёртвое существо не может атаковать");
         }
 
-        if (Attack <= 0)
+        if (Attack.Value <= 0)
         {
             throw new InvalidOperationException("Существо с неположительной атакой не может атаковать");
         }
@@ -32,7 +34,7 @@ public abstract class Creature : ICreature
             throw new InvalidOperationException("Нельзя атаковать мертвое существо");
         }
 
-        target.TakeDamage(Attack);
+        target.TakeDamage(Attack.Value);
     }
 
     public virtual void TakeDamage(int amount)
@@ -42,22 +44,22 @@ public abstract class Creature : ICreature
             return;
         }
 
-        Health -= amount;
+        Health = Health.Subtract(amount);
     }
 
     public void ModifyAttack(int delta)
     {
-        Attack += delta;
+        Attack = Attack.Add(delta);
     }
 
     public void ModifyHealth(int delta)
     {
-        Health += delta;
+        Health = Health.Add(delta);
     }
 
     public ICreature CloneForNewContext()
     {
-        Creature copy = Instantiate(Attack, Health);
+        Creature copy = Instantiate(Attack.Value, Health.Value);
         copy.ResetEphemeralState();
         return copy;
     }

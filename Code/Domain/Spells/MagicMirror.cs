@@ -6,8 +6,8 @@ public sealed class MagicMirror : ISpell
 {
     public ICreature Cast(ICreature target)
     {
-        int a = target.Attack;
-        int h = target.Health;
+        int a = target.Attack.Value;
+        int h = target.Health.Value;
 
         target.ModifyAttack(h - a);
         target.ModifyHealth(a - h);

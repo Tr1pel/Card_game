@@ -16,8 +16,8 @@ public class SpellsTests
         ICreature result = spell.Cast(creature);
 
         Assert.Same(creature, result);
-        Assert.Equal(6, creature.Attack);
-        Assert.Equal(5, creature.Health);
+        Assert.Equal(6, creature.Attack.Value);
+        Assert.Equal(5, creature.Health.Value);
     }
 
     [Fact]
@@ -28,8 +28,8 @@ public class SpellsTests
 
         spell.Cast(creature);
 
-        Assert.Equal(2, creature.Attack);
-        Assert.Equal(8, creature.Health);
+        Assert.Equal(2, creature.Attack.Value);
+        Assert.Equal(8, creature.Health.Value);
     }
 
     [Fact]
@@ -40,8 +40,8 @@ public class SpellsTests
 
         spell.Cast(creature);
 
-        Assert.Equal(8, creature.Attack);
-        Assert.Equal(3, creature.Health);
+        Assert.Equal(8, creature.Attack.Value);
+        Assert.Equal(3, creature.Health.Value);
     }
 
     [Fact]
@@ -54,7 +54,7 @@ public class SpellsTests
         creature.TakeDamage(1);
         creature.TakeDamage(2);
 
-        Assert.Equal(8, creature.Health);
+        Assert.Equal(8, creature.Health.Value);
     }
 
     [Fact]
@@ -70,7 +70,7 @@ public class SpellsTests
         creature.TakeDamage(3);
         creature.TakeDamage(3);
 
-        Assert.Equal(7, creature.Health);
+        Assert.Equal(7, creature.Health.Value);
     }
 
     [Fact]
@@ -80,7 +80,7 @@ public class SpellsTests
 
         creature.Apply(new PowerPotion(3));
 
-        Assert.Equal(7, creature.Attack);
-        Assert.Equal(4, creature.Health);
+        Assert.Equal(7, creature.Attack.Value);
+        Assert.Equal(4, creature.Health.Value);
     }
 }

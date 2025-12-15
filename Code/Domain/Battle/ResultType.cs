@@ -1,6 +1,6 @@
 ﻿namespace Itmo.ObjectOrientedProgramming.Lab3.Battle;
 
-public enum BattleOutcome
+public enum ResultType
 {
     Player1Win,
     Player2Win,

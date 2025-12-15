@@ -1,8 +1,8 @@
-﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Context.Board;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Battle;
 
 public interface IBattleEngine
 {
-    BattleOutcome Fight(IEnumerable<ICreature> player1Board, IEnumerable<ICreature> player2Board);
+    ResultType Fight(IBoard player1Board, IBoard player2Board);
 }
