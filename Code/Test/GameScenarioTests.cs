@@ -17,11 +17,11 @@ public class GameScenarioTests
         var board1 = new PlayerBoard();
         var board2 = new PlayerBoard();
 
-        var factories = catalog.Factories.ToList();
-        board1.AddFromBoard(catalog.Create(factories[0].Id));
-        board1.AddFromBoard(catalog.Create(factories[1].Id));
-        board1.AddFromBoard(catalog.Create(factories[2].Id));
-        board1.AddFromBoard(catalog.Create(factories[3].Id));
+        // var factories = catalog.Factories.ToList();
+        board1.AddFromBoard(catalog.Create("Amulet Master"));
+        board1.AddFromBoard(catalog.Create("BattleAnalyst"));
+        board2.AddFromBoard(catalog.Create("MimicChest"));
+        board2.AddFromBoard(catalog.Create("EvilFighter"));
 
         var spells = new ISpell[]
         {

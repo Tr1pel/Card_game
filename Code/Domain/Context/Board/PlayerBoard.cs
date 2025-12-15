@@ -45,6 +45,10 @@ public sealed class PlayerBoard : IBoard
     public ICreature? GetAttacker(IRng rng)
     {
         var candidates = _creatures.Where(c => c.IsAlive && c.Attack.Value > 0).ToList();
+        if (candidates.Count == 0)
+        {
+            return null;
+        }
 
         int indx = rng.NextInt(0, candidates.Count);
         return candidates[indx];
@@ -53,6 +57,10 @@ public sealed class PlayerBoard : IBoard
     public ICreature? GetTarget(IRng rng)
     {
         var candidates = _creatures.Where(c => c.IsAlive).ToList();
+        if (candidates.Count == 0)
+        {
+            return null;
+        }
 
         int indx = rng.NextInt(0, candidates.Count);
         return candidates[indx];
