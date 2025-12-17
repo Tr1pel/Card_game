@@ -1,5 +1,4 @@
-﻿using Itmo.ObjectOrientedProgramming.Lab3.Battle;
-using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Context.Board;
 
@@ -30,16 +29,6 @@ public sealed class PlayerBoard : IBoard
     public void RemoveToBoard(ICreature creature)
     {
         _creatures.Remove(creature);
-    }
-
-    public IEnumerable<ICreature> GetPotentialAttackers()
-    {
-        return _creatures.Where(c => c.IsAlive);
-    }
-
-    public IEnumerable<ICreature> GetPotentialTargets()
-    {
-        return _creatures.Where(c => c.IsAlive);
     }
 
     public ICreature? GetAttacker(IRng rng)

@@ -1,5 +1,4 @@
-﻿using Itmo.ObjectOrientedProgramming.Lab3.Battle;
-using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Context.Board;
 
@@ -12,10 +11,6 @@ public interface IBoard
     void AddFromBoard(ICreature creature);
 
     void RemoveToBoard(ICreature creature);
-
-    IEnumerable<ICreature> GetPotentialAttackers();
-
-    IEnumerable<ICreature> GetPotentialTargets();
 
     ICreature? GetAttacker(IRng rng);
 

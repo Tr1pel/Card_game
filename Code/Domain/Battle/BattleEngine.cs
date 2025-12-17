@@ -12,7 +12,7 @@ public sealed class BattleEngine : IBattleEngine
         _rng = rng;
     }
 
-    public ResultType Fight(IBoard player1Board, IBoard player2Board)
+    public BattleResult Fight(IBoard player1Board, IBoard player2Board)
     {
         IBoard p1 = CloneToBoard(player1Board);
         IBoard p2 = CloneToBoard(player2Board);
@@ -31,12 +31,12 @@ public sealed class BattleEngine : IBattleEngine
             {
                 if (target is null)
                 {
-                    return ResultType.Draw;
+                    return new BattleResult.Draw();
                 }
 
                 if (target.Attack.Value <= 0)
                 {
-                    return ResultType.Draw;
+                    return new BattleResult.Draw();
                 }
 
                 player1Turn = !player1Turn;
@@ -45,7 +45,7 @@ public sealed class BattleEngine : IBattleEngine
 
             if (target is null)
             {
-                return player1Turn ? ResultType.Player1Win : ResultType.Player2Win;
+                return player1Turn ? new BattleResult.Player1Win() : new BattleResult.Player2Win();
             }
 
             attacker.AttackTarget(target);

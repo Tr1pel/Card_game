@@ -6,9 +6,4 @@ public static class CreatureTransfer
     {
         return boardCreature.CloneForNewContext();
     }
-
-    public static ICreature ToBoard(this ICreature catalogCreature)
-    {
-        return catalogCreature.CloneForNewContext();
-    }
 }
