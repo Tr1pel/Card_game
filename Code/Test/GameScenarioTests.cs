@@ -39,8 +39,8 @@ public class GameScenarioTests
         }
 
         var engine = new BattleEngine(rng);
-        ResultType outcome = engine.Fight(board1, board2);
+        BattleResult outcome = engine.Fight(board1, board2);
 
-        Assert.True(Enum.IsDefined(outcome));
+        Assert.IsAssignableFrom<BattleResult>(outcome);
     }
 }

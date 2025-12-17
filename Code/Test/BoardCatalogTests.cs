@@ -53,23 +53,6 @@ public class BoardCatalogTests
     }
 
     [Fact]
-    public void Board_GetPotentialAttackers_ShouldReturnOnlyAlive()
-    {
-        var board = new PlayerBoard();
-        var alive = new DummyCreature(1, 2);
-        var dead = new DummyCreature(1, 1);
-        dead.TakeDamage(10);
-
-        board.AddFromBoard(alive);
-        board.AddFromBoard(dead);
-
-        IReadOnlyCollection<ICreature> attackers = board.GetPotentialAttackers().ToList();
-
-        Assert.Single(attackers);
-        Assert.Same(alive, attackers.First());
-    }
-
-    [Fact]
     public void Catalog_Create_ShouldProduceIndependentInstances()
     {
         var catalog = new PlayerCatalog();

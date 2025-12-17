@@ -17,11 +17,11 @@ public class BattleTests
     {
         var engine = new BattleEngine(new ZeroRng());
 
-        ResultType outcome = engine.Fight(
+        BattleResult outcome = engine.Fight(
             player1Board: new PlayerBoard(),
             player2Board: new PlayerBoard());
 
-        Assert.Equal(ResultType.Draw, outcome);
+        Assert.IsType<BattleResult.Draw>(outcome);
     }
 
     [Fact]
@@ -33,11 +33,11 @@ public class BattleTests
         var board2 = new PlayerBoard();
         board1.AddFromBoard(new DummyCreature(3, 3));
 
-        ResultType outcome = engine.Fight(
+        BattleResult outcome = engine.Fight(
             player1Board: board1,
             player2Board: board2);
 
-        Assert.Equal(ResultType.Player1Win, outcome);
+        Assert.IsType<BattleResult.Player1Win>(outcome);
     }
 
     [Fact]
@@ -49,11 +49,11 @@ public class BattleTests
         var board2 = new PlayerBoard();
         board2.AddFromBoard(new DummyCreature(2, 2));
 
-        ResultType outcome = engine.Fight(
+        BattleResult outcome = engine.Fight(
             player1Board: board1,
             player2Board: board2);
 
-        Assert.Equal(ResultType.Player2Win, outcome);
+        Assert.IsType<BattleResult.Player2Win>(outcome);
     }
 
     [Fact]
@@ -69,9 +69,9 @@ public class BattleTests
         IBoard p1 = board1;
         IBoard p2 = board2;
 
-        ResultType outcome = engine.Fight(p1, p2);
+        BattleResult outcome = engine.Fight(p1, p2);
 
-        Assert.Equal(ResultType.Player1Win, outcome);
+        Assert.IsType<BattleResult.Player1Win>(outcome);
     }
 
     [Fact]
@@ -87,8 +87,8 @@ public class BattleTests
         IBoard p1 = board1;
         IBoard p2 = board2;
 
-        ResultType outcome = engine.Fight(p1, p2);
+        BattleResult outcome = engine.Fight(p1, p2);
 
-        Assert.Equal(ResultType.Draw, outcome);
+        Assert.IsType<BattleResult.Draw>(outcome);
     }
 }
