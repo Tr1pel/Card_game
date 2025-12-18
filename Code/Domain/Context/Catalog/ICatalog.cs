@@ -11,5 +11,7 @@ public interface ICatalog
 
     void RemoveFactory(ICreatureFactory factory);
 
+    ICreatureBuilder Configure(string id);
+
     ICreature Create(string id);
 }

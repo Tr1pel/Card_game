@@ -24,7 +24,7 @@ public sealed class PlayerCatalog : ICatalog
         _factories.Remove(factory);
     }
 
-    public ICreature Create(string id)
+    public ICreatureBuilder Configure(string id)
     {
         ArgumentException.ThrowIfNullOrEmpty(id);
         ICreatureFactory? factory = _factories.FirstOrDefault(f => string.Equals(f.Id, id, StringComparison.Ordinal));
@@ -33,6 +33,11 @@ public sealed class PlayerCatalog : ICatalog
             throw new InvalidOperationException($"Фабрика {id} не найдена в каталоге");
         }
 
-        return factory.Create();
+        return new CreatureBuilder(factory.Create);
+    }
+
+    public ICreature Create(string id)
+    {
+        return Configure(id).Build();
     }
 }

@@ -3,6 +3,7 @@ using Itmo.ObjectOrientedProgramming.Lab3.Context.Catalog;
 using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 using Itmo.ObjectOrientedProgramming.Lab3.Creatures.Factories;
 using Itmo.ObjectOrientedProgramming.Lab3.Creatures.ObjectsCreatures;
+using Itmo.ObjectOrientedProgramming.Lab3.Modifiers;
 using Xunit;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Tests;
@@ -89,5 +90,28 @@ public class BoardCatalogTests
         var catalog = new PlayerCatalog();
 
         Assert.Throws<InvalidOperationException>(() => catalog.Create("MissingFactory"));
+    }
+
+    [Fact]
+    public void Catalog_Configure_ShouldAllowStatTweaksAndModifiers()
+    {
+        var catalog = new PlayerCatalog();
+        var factory = new MimicChestFactory();
+        catalog.AddFactory(factory);
+
+        ICreature configured = catalog
+            .Configure(factory.Id)
+            .WithAttack(2)
+            .WithHealth(3)
+            .WithModifier(c => c.WithAttackMastery(1))
+            .Build();
+
+        Assert.Equal(3, configured.Attack.Value);
+        Assert.Equal(4, configured.Health.Value);
+
+        var target = new DummyCreature(0, 6);
+        configured.AttackTarget(target);
+
+        Assert.Equal(0, target.Health.Value);
     }
 }
