@@ -2,7 +2,6 @@
 using Itmo.ObjectOrientedProgramming.Lab3.Context.Catalog;
 using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 using Itmo.ObjectOrientedProgramming.Lab3.Creatures.Factories;
-using Itmo.ObjectOrientedProgramming.Lab3.Creatures.ObjectsCreatures;
 using Itmo.ObjectOrientedProgramming.Lab3.Modifiers;
 using Xunit;
 
@@ -113,5 +112,15 @@ public class BoardCatalogTests
         configured.AttackTarget(target);
 
         Assert.Equal(0, target.Health.Value);
+    }
+
+    public sealed class DummyCreature : Creature
+    {
+        public DummyCreature(int attack, int health) : base(attack, health) { }
+
+        protected override Creature Instantiate(int attack, int health)
+        {
+            return new DummyCreature(attack, health);
+        }
     }
 }

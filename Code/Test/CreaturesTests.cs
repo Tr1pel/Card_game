@@ -85,4 +85,14 @@ public class CreaturesTests
         amuletMaster.TakeDamage(1);
         Assert.Equal(1, amuletMaster.Health.Value);
     }
+
+    public sealed class DummyCreature : Creature
+    {
+        public DummyCreature(int attack, int health) : base(attack, health) { }
+
+        protected override Creature Instantiate(int attack, int health)
+        {
+            return new DummyCreature(attack, health);
+        }
+    }
 }

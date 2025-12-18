@@ -26,7 +26,6 @@ public sealed class PlayerCatalog : ICatalog
 
     public ICreatureBuilder Configure(string id)
     {
-        ArgumentException.ThrowIfNullOrEmpty(id);
         ICreatureFactory? factory = _factories.FirstOrDefault(f => string.Equals(f.Id, id, StringComparison.Ordinal));
         if (factory is null)
         {

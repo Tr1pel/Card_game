@@ -2,7 +2,7 @@
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Context.Board;
 
-public sealed class PlayerBoard : IBoard
+public sealed class PlayerBoard
 {
     private readonly List<ICreature> _creatures;
 

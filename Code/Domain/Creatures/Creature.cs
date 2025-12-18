@@ -24,11 +24,6 @@ public abstract class Creature : ICreature
             throw new InvalidOperationException("Мёртвое существо не может атаковать");
         }
 
-        if (Attack.Value <= 0)
-        {
-            throw new InvalidOperationException("Существо с неположительной атакой не может атаковать");
-        }
-
         if (!target.IsAlive)
         {
             throw new InvalidOperationException("Нельзя атаковать мертвое существо");

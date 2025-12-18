@@ -65,4 +65,14 @@ public class CloneTests
 
         Assert.Equal(6, target.Health.Value);
     }
+
+    public sealed class DummyCreature : Creature
+    {
+        public DummyCreature(int attack, int health) : base(attack, health) { }
+
+        protected override Creature Instantiate(int attack, int health)
+        {
+            return new DummyCreature(attack, health);
+        }
+    }
 }

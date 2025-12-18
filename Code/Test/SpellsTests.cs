@@ -1,5 +1,4 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
-using Itmo.ObjectOrientedProgramming.Lab3.Creatures.ObjectsCreatures;
 using Itmo.ObjectOrientedProgramming.Lab3.Spells;
 using Xunit;
 
@@ -82,5 +81,15 @@ public class SpellsTests
 
         Assert.Equal(7, creature.Attack.Value);
         Assert.Equal(4, creature.Health.Value);
+    }
+
+    public sealed class DummyCreature : Creature
+    {
+        public DummyCreature(int attack, int health) : base(attack, health) { }
+
+        protected override Creature Instantiate(int attack, int health)
+        {
+            return new DummyCreature(attack, health);
+        }
     }
 }

@@ -12,17 +12,17 @@ public sealed class BattleEngine : IBattleEngine
         _rng = rng;
     }
 
-    public BattleResult Fight(IBoard player1Board, IBoard player2Board)
+    public BattleResult Fight(PlayerBoard player1Board, PlayerBoard player2Board)
     {
-        IBoard p1 = CloneToBoard(player1Board);
-        IBoard p2 = CloneToBoard(player2Board);
+        PlayerBoard p1 = CloneToBoard(player1Board);
+        PlayerBoard p2 = CloneToBoard(player2Board);
 
         bool player1Turn = true;
 
         while (true)
         {
-            IBoard current = player1Turn ? p1 : p2;
-            IBoard opponent = player1Turn ? p2 : p1;
+            PlayerBoard current = player1Turn ? p1 : p2;
+            PlayerBoard opponent = player1Turn ? p2 : p1;
 
             ICreature? attacker = current.GetAttacker(_rng);
             ICreature? target = opponent.GetTarget(_rng);
@@ -34,7 +34,7 @@ public sealed class BattleEngine : IBattleEngine
                     return new BattleResult.Draw();
                 }
 
-                if (target.Attack.Value <= 0)
+                if (target.Attack.Value == 0)
                 {
                     return new BattleResult.Draw();
                 }
@@ -53,7 +53,7 @@ public sealed class BattleEngine : IBattleEngine
         }
     }
 
-    private static PlayerBoard CloneToBoard(IBoard source)
+    private static PlayerBoard CloneToBoard(PlayerBoard source)
     {
         var cloned = new PlayerBoard(source.MaxSlots);
         foreach (ICreature creature in source.Creatures)

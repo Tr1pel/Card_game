@@ -1,6 +1,6 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab3.Battle;
 using Itmo.ObjectOrientedProgramming.Lab3.Context.Board;
-using Itmo.ObjectOrientedProgramming.Lab3.Creatures.ObjectsCreatures;
+using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
 using Xunit;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Tests;
@@ -66,10 +66,7 @@ public class BattleTests
         board1.AddFromBoard(new DummyCreature(3, 3));
         board2.AddFromBoard(new DummyCreature(1, 2));
 
-        IBoard p1 = board1;
-        IBoard p2 = board2;
-
-        BattleResult outcome = engine.Fight(p1, p2);
+        BattleResult outcome = engine.Fight(board1, board2);
 
         Assert.IsType<BattleResult.Player1Win>(outcome);
     }
@@ -84,11 +81,18 @@ public class BattleTests
         board1.AddFromBoard(new DummyCreature(0, 5));
         board2.AddFromBoard(new DummyCreature(0, 5));
 
-        IBoard p1 = board1;
-        IBoard p2 = board2;
-
-        BattleResult outcome = engine.Fight(p1, p2);
+        BattleResult outcome = engine.Fight(board1, board2);
 
         Assert.IsType<BattleResult.Draw>(outcome);
+    }
+
+    public sealed class DummyCreature : Creature
+    {
+        public DummyCreature(int attack, int health) : base(attack, health) { }
+
+        protected override Creature Instantiate(int attack, int health)
+        {
+            return new DummyCreature(attack, health);
+        }
     }
 }

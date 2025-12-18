@@ -1,5 +1,4 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
-using Itmo.ObjectOrientedProgramming.Lab3.Creatures.ObjectsCreatures;
 using Itmo.ObjectOrientedProgramming.Lab3.Modifiers;
 using Xunit;
 
@@ -89,5 +88,15 @@ public class ModifiersTests
         attacker.AttackTarget(target);
 
         Assert.False(target.IsAlive);
+    }
+
+    public sealed class DummyCreature : Creature
+    {
+        public DummyCreature(int attack, int health) : base(attack, health) { }
+
+        protected override Creature Instantiate(int attack, int health)
+        {
+            return new DummyCreature(attack, health);
+        }
     }
 }

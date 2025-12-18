@@ -9,5 +9,14 @@ public record class AttackValue
 
     public int Value { get; }
 
-    public AttackValue Add(int d) => new AttackValue(Value + d);
+    public AttackValue Add(int d)
+    {
+        int newValue = Value + d;
+        if (newValue < 0)
+        {
+            newValue = 0;
+        }
+
+        return new AttackValue(newValue);
+    }
 }
