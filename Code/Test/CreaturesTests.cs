@@ -68,7 +68,7 @@ public class CreaturesTests
         horror.TakeDamage(2);
 
         Assert.False(horror.IsAlive);
-        Assert.Equal(-1, horror.Health.Value);
+        Assert.Equal(0, horror.Health.Value);
     }
 
     [Fact]
