@@ -2,11 +2,11 @@
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Modifiers;
 
-public sealed class AttackMasteryApply : IModifier
+public sealed class AttackMasteryApplier : IModifier
 {
     private readonly int _stacks;
 
-    public AttackMasteryApply(int stacks)
+    public AttackMasteryApplier(int stacks)
     {
         _stacks = stacks;
     }

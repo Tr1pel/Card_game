@@ -2,11 +2,11 @@
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Modifiers;
 
-public sealed class MagicShieldApply : IModifier
+public sealed class MagicShieldApplier : IModifier
 {
     private readonly int _charges;
 
-    public MagicShieldApply(int charges)
+    public MagicShieldApplier(int charges)
     {
         _charges = charges;
     }
