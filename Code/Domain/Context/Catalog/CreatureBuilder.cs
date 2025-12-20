@@ -1,15 +1,17 @@
 ﻿using Itmo.ObjectOrientedProgramming.Lab3.Creatures;
+using Itmo.ObjectOrientedProgramming.Lab3.Creatures.Factories;
+using Itmo.ObjectOrientedProgramming.Lab3.Modifiers;
 
 namespace Itmo.ObjectOrientedProgramming.Lab3.Context.Catalog;
 
 public sealed class CreatureBuilder : ICreatureBuilder
 {
-    private readonly Func<ICreature> _factory;
-    private readonly List<Func<ICreature, ICreature>> _modifiers = new();
+    private readonly ICreatureFactory _factory;
+    private readonly List<IModifier> _modifiers = new();
     private int _attackD;
     private int _healthD;
 
-    public CreatureBuilder(Func<ICreature> factory)
+    public CreatureBuilder(ICreatureFactory factory)
     {
         _factory = factory;
     }
@@ -26,7 +28,7 @@ public sealed class CreatureBuilder : ICreatureBuilder
         return this;
     }
 
-    public ICreatureBuilder WithModifier(Func<ICreature, ICreature> modifier)
+    public ICreatureBuilder WithModifier(IModifier modifier)
     {
         _modifiers.Add(modifier);
         return this;
@@ -34,7 +36,7 @@ public sealed class CreatureBuilder : ICreatureBuilder
 
     public ICreature Build()
     {
-        ICreature creature = _factory();
+        ICreature creature = _factory.Create();
 
         if (_attackD != 0)
         {
@@ -46,9 +48,9 @@ public sealed class CreatureBuilder : ICreatureBuilder
             creature.ModifyHealth(_healthD);
         }
 
-        foreach (Func<ICreature, ICreature> modifier in _modifiers)
+        foreach (IModifier modifier in _modifiers)
         {
-            creature = modifier(creature);
+            creature = modifier.Apply(creature);
         }
 
         return creature;

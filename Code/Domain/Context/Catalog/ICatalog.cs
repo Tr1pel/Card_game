@@ -11,7 +11,9 @@ public interface ICatalog
 
     void RemoveFactory(ICreatureFactory factory);
 
-    ICreatureBuilder Configure(string id);
+    void AddDirector(CreatureDirector director);
 
     ICreature Create(string id);
+
+    ICreature Create(string id, CreatureBuildPlan plan);
 }

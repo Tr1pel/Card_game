@@ -6,13 +6,17 @@ namespace Itmo.ObjectOrientedProgramming.Lab3.Context.Catalog;
 public sealed class PlayerCatalog : ICatalog
 {
     private readonly List<ICreatureFactory> _factories;
+    private readonly List<CreatureDirector> _directors;
 
     public PlayerCatalog()
     {
         _factories = new List<ICreatureFactory>();
+        _directors = new List<CreatureDirector>();
     }
 
     public IReadOnlyCollection<ICreatureFactory> Factories => _factories;
+
+    public IReadOnlyCollection<CreatureDirector> Directors => _directors;
 
     public void AddFactory(ICreatureFactory factory)
     {
@@ -24,6 +28,11 @@ public sealed class PlayerCatalog : ICatalog
         _factories.Remove(factory);
     }
 
+    public void AddDirector(CreatureDirector director)
+    {
+        _directors.Add(director);
+    }
+
     public ICreatureBuilder Configure(string id)
     {
         ICreatureFactory? factory = _factories.FirstOrDefault(f => string.Equals(f.Id, id, StringComparison.Ordinal));
@@ -32,11 +41,23 @@ public sealed class PlayerCatalog : ICatalog
             throw new InvalidOperationException($"Фабрика {id} не найдена в каталоге");
         }
 
-        return new CreatureBuilder(factory.Create);
+        return new CreatureBuilder(factory);
     }
 
     public ICreature Create(string id)
     {
-        return Configure(id).Build();
+        return Create(id, CreatureBuildPlan.Empty);
+    }
+
+    public ICreature Create(string id, CreatureBuildPlan plan)
+    {
+        ICreatureBuilder builder = Configure(id);
+        CreatureDirector? director = _directors.FirstOrDefault();
+        if (director is null)
+        {
+            throw new InvalidOperationException("В каталоге нет доступного директора");
+        }
+
+        return director.Build(builder, plan);
     }
 }
